@@ -492,7 +492,7 @@ const IconAdjuster: React.FC<Props> = ({ state, handleIconUpload, updateIconAdju
       
       let fileName = zipName.trim();
       if (!fileName) {
-          fileName = "Kenji_icons.zip";
+          fileName = "icon_creator.zip";
       } else {
           if (!fileName.toLowerCase().endsWith('.zip')) {
               fileName += ".zip";

@@ -38,7 +38,7 @@ export const TRANSLATIONS = {
     sendTo: "Send to Mode",
     statusTitle: "Generating...",
     iconAdjuster: {
-      title: "KEJI ICON CREATOR",
+      title: "ICON CREATOR",
       uploadTitle: "Upload Icons",
       uploadDesc: "Drag & drop or click to upload",
       selectionMode: "Selection Mode",
@@ -147,7 +147,7 @@ export const TRANSLATIONS = {
     sendTo: "ส่งไปยังโหมด",
     statusTitle: "กำลังสร้าง...",
     iconAdjuster: {
-      title: "KEJI ICON CREATOR",
+      title: "ICON CREATOR",
       uploadTitle: "อัปโหลดไอคอน",
       uploadDesc: "ลากและวาง หรือคลิกเพื่ออัปโหลด",
       selectionMode: "โหมดการเลือก",

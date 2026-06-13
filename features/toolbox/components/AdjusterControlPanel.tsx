@@ -200,7 +200,7 @@ export const AdjusterControlPanel: React.FC<Props> = ({
                 <div className="space-y-1 flex flex-col justify-end">
                   <button onClick={handleAutoCrop}
                     className="w-full py-1.5 bg-teal-900/30 hover:bg-teal-900/50 text-teal-400 rounded p-1.5 text-xs font-bold border border-teal-500/20 transition-all flex items-center justify-center gap-1">
-                    <span className="text-[10px]">✂️</span> Auto Crop
+                    Auto Crop
                   </button>
                 </div>
               </div>

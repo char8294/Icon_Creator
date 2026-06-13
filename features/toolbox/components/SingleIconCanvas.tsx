@@ -102,19 +102,17 @@ export const SingleIconCanvas: React.FC<Props> = ({ item, data, isSelected, onSe
                         if (data.stroke2Enabled && data.stroke2Thickness > 0) {
                               offCtx.save();
                               const thick = data.stroke2Thickness;
-                              const steps = data.stroke2Smoothness || 8;
                               offCtx.shadowColor = data.stroke2Color;
-                              offCtx.shadowBlur = data.stroke2Blur || 0;
-                              const offsets = [];
-                              for (let i = 0; i < steps; i++) {
-                                  const angle = (i / steps) * 2 * Math.PI;
-                                  offsets.push([Math.cos(angle) * thick, Math.sin(angle) * thick]);
+                              offCtx.shadowBlur = Math.max(data.stroke2Blur || 0, 2);
+                              for (let r = thick; r >= 1; r -= 2) {
+                                  const steps = Math.max(8, Math.ceil(Math.PI * r));
+                                  for (let i = 0; i < steps; i++) {
+                                      const angle = (i / steps) * 2 * Math.PI;
+                                      offCtx.shadowOffsetX = Math.cos(angle) * r;
+                                      offCtx.shadowOffsetY = Math.sin(angle) * r;
+                                      offCtx.drawImage(img, dx, dy, dw, dh);
+                                  }
                               }
-                              offsets.forEach(([ox, oy]) => {
-                                 offCtx.shadowOffsetX = ox;
-                                 offCtx.shadowOffsetY = oy;
-                                 offCtx.drawImage(img, dx, dy, dw, dh);
-                              });
                               offCtx.restore();
                         }
 
@@ -122,19 +120,17 @@ export const SingleIconCanvas: React.FC<Props> = ({ item, data, isSelected, onSe
                         if (data.strokeEnabled && data.strokeThickness > 0) {
                               offCtx.save();
                               const thick = data.strokeThickness;
-                              const steps = data.strokeSmoothness || 8;
                               offCtx.shadowColor = data.strokeColor;
-                              offCtx.shadowBlur = data.strokeBlur || 0;
-                              const offsets = [];
-                              for (let i = 0; i < steps; i++) {
-                                  const angle = (i / steps) * 2 * Math.PI;
-                                  offsets.push([Math.cos(angle) * thick, Math.sin(angle) * thick]);
+                              offCtx.shadowBlur = Math.max(data.strokeBlur || 0, 2);
+                              for (let r = thick; r >= 1; r -= 2) {
+                                  const steps = Math.max(8, Math.ceil(Math.PI * r));
+                                  for (let i = 0; i < steps; i++) {
+                                      const angle = (i / steps) * 2 * Math.PI;
+                                      offCtx.shadowOffsetX = Math.cos(angle) * r;
+                                      offCtx.shadowOffsetY = Math.sin(angle) * r;
+                                      offCtx.drawImage(img, dx, dy, dw, dh);
+                                  }
                               }
-                              offsets.forEach(([ox, oy]) => {
-                                 offCtx.shadowOffsetX = ox;
-                                 offCtx.shadowOffsetY = oy;
-                                 offCtx.drawImage(img, dx, dy, dw, dh);
-                              });
                               offCtx.restore();
                          }
                          offCtx.drawImage(img, dx, dy, dw, dh);
@@ -173,18 +169,18 @@ export const SingleIconCanvas: React.FC<Props> = ({ item, data, isSelected, onSe
                     if (data.stroke2Enabled && data.stroke2Thickness > 0) {
                         ctx.save();
                         const thick = data.stroke2Thickness;
-                        const steps = data.stroke2Smoothness || 8;
                         ctx.shadowColor = data.stroke2Color;
-                        ctx.shadowBlur = data.stroke2Blur || 0;
-                        const offsets = [];
-                        for (let i = 0; i < steps; i++) {
-                            const angle = (i / steps) * 2 * Math.PI;
-                            offsets.push([Math.cos(angle) * thick, Math.sin(angle) * thick]);
+                        ctx.shadowBlur = Math.max(data.stroke2Blur || 0, 2);
+                        // Multi-ring with optimized step count
+                        for (let r = thick; r >= 1; r -= 2) {
+                            const steps = Math.max(8, Math.ceil(Math.PI * r));
+                            for (let i = 0; i < steps; i++) {
+                                const angle = (i / steps) * 2 * Math.PI;
+                                ctx.shadowOffsetX = Math.cos(angle) * r;
+                                ctx.shadowOffsetY = Math.sin(angle) * r;
+                                ctx.drawImage(img, dx, dy, dw, dh);
+                            }
                         }
-                        offsets.forEach(([ox, oy]) => {
-                           ctx.shadowOffsetX = ox; ctx.shadowOffsetY = oy;
-                           ctx.drawImage(img, dx, dy, dw, dh);
-                        });
                         ctx.restore();
                     }
 
@@ -192,23 +188,18 @@ export const SingleIconCanvas: React.FC<Props> = ({ item, data, isSelected, onSe
                     if (data.strokeEnabled && data.strokeThickness > 0) {
                         ctx.save();
                         const thick = data.strokeThickness;
-                        const steps = data.strokeSmoothness || 8;
-                        
                         ctx.shadowColor = data.strokeColor;
-                        ctx.shadowBlur = data.strokeBlur || 0;
-                        
-                        const offsets = [];
-                        for (let i = 0; i < steps; i++) {
-                            const angle = (i / steps) * 2 * Math.PI;
-                            offsets.push([Math.cos(angle) * thick, Math.sin(angle) * thick]);
+                        ctx.shadowBlur = Math.max(data.strokeBlur || 0, 2);
+                        // Multi-ring with optimized step count
+                        for (let r = thick; r >= 1; r -= 2) {
+                            const steps = Math.max(8, Math.ceil(Math.PI * r));
+                            for (let i = 0; i < steps; i++) {
+                                const angle = (i / steps) * 2 * Math.PI;
+                                ctx.shadowOffsetX = Math.cos(angle) * r;
+                                ctx.shadowOffsetY = Math.sin(angle) * r;
+                                ctx.drawImage(img, dx, dy, dw, dh);
+                            }
                         }
-                        
-                        offsets.forEach(([ox, oy]) => {
-                           ctx.shadowOffsetX = ox;
-                           ctx.shadowOffsetY = oy;
-                           ctx.drawImage(img, dx, dy, dw, dh);
-                        });
-                        
                         ctx.restore();
                     }
                     ctx.drawImage(img, dx, dy, dw, dh);

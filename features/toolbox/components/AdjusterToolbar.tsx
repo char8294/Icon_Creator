@@ -77,15 +77,12 @@ export const AdjusterToolbar: React.FC<Props> = ({
       {/* Search Bar - center, flexible */}
       <div className="flex-1 max-w-xs shrink-0">
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none">
-            <span className="text-zinc-500 group-focus-within:text-blue-400 transition-colors text-xs">🔍</span>
-          </div>
           <input
             type="text"
             value={data.searchTerm}
             onChange={(e) => updateIconAdjusterData({ searchTerm: e.target.value })}
             placeholder={t.iconAdjuster.searchPlaceholder}
-            className="w-full bg-zinc-950/50 border border-zinc-800/50 rounded-full py-1.5 pl-8 pr-3 text-[10px] text-zinc-300 focus:border-blue-500/50 focus:bg-zinc-950 outline-none transition-all placeholder-zinc-600"
+            className="w-full bg-zinc-950/50 border border-zinc-800/50 rounded-full py-1.5 pl-3 pr-3 text-[10px] text-zinc-300 focus:border-blue-500/50 focus:bg-zinc-950 outline-none transition-all placeholder-zinc-600"
           />
           {data.searchTerm && (
             <button

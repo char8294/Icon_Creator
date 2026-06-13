@@ -226,10 +226,13 @@ const App: React.FC = () => {
       
       {/* Header */}
       <header className="w-full max-w-7xl mx-auto p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6 z-10">
-        <div className="flex items-center gap-3 cursor-pointer group">
+        <div className="flex items-center gap-2 cursor-pointer group">
             <h1 className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">
                 ICON CREATOR
             </h1>
+            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-500 select-none">
+                v1.0.0
+            </span>
         </div>
       </header>
 
